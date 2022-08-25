@@ -1,53 +1,34 @@
-global:
-    api-listen-addr: :5183
-    timeout: 10s
-    memo: Genshinkazu#9018
-    light-cache-size: 20
+default_chain: stride-testnet
 chains:
-    gaia:
-        type: cosmos
-        value:
-            key: wallet
-            chain-id: GAIA
-            rpc-addr: http://127.0.0.1:23657
-            account-prefix: cosmos
-            keyring-backend: test
-            gas-adjustment: 1.2
-            gas-prices: 0.000uatom
-            debug: false
-            timeout: 20s
-            output-format: json
-            sign-mode: direct
-    stride:
-        type: cosmos
-        value:
-            key: wallet
-            chain-id: STRIDE-TESTNET-4
-            rpc-addr: http://127.0.0.1:16657
-            account-prefix: stride
-            keyring-backend: test
-            gas-adjustment: 1.2
-            gas-prices: 0.000ustrd
-            debug: false
-            timeout: 20s
-            output-format: json
-            sign-mode: direct
-paths:
-    stride-gaia:
-        src:
-            chain-id: STRIDE-TESTNET-4
-            client-id: 07-tendermint-0
-            connection-id: connection-0
-        dst:
-            chain-id: GAIA
-            client-id: 07-tendermint-0
-            connection-id: connection-0
-        src-channel-filter:
-            rule: allowlist
-            channel-list:
-                - channel-0
-                - channel-1
-                - channel-2
-                - channel-3
-                - channel-4
+  gaia-testnet:
+    key: wallet
+    chain-id: GAIA
+    rpc-addr: http://127.0.0.1:23657      # use your own GAIA RPC endpoint here
+    grpc-addr: http://127.0.0.1:23090     # use your own GAIA GRPC endpoint here
+    account-prefix: cosmos
+    keyring-backend: test
+    gas-adjustment: 1.2
+    gas-prices: 0.001uatom
+    key-directory: /root/.icq/keys
+    debug: false
+    timeout: 20s
+    block-timeout: ""
+    output-format: json
+    sign-mode: direct
+  stride-testnet:
+    key: wallet
+    chain-id: STRIDE-TESTNET-4
+    rpc-addr: http://127.0.0.1:16657      # use your own Stride GRPC endpoint here
+    grpc-addr: http://127.0.0.1:16090     # use your own Stride GRPC endpoint here
+    account-prefix: stride
+    keyring-backend: test
+    gas-adjustment: 1.2
+    gas-prices: 0.001ustrd
+    key-directory: /root/.icq/keys
+    debug: false
+    timeout: 20s
+    block-timeout: ""
+    output-format: json
+    sign-mode: direct
+cl: {}
 
